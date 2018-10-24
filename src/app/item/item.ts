@@ -1,8 +1,8 @@
 export class Item {
-    title : string,
+    id : number;
+    title : string;
     photo : number;
-    email : string;
-    phoneNumber : number;
-    where : number;
-    whereDescript : string;
+    contact : string;
+    description : string;
+    date : string;
 }

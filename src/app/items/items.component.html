@@ -1,6 +1,11 @@
-<h2>{{item.title}}</h2>
-<div><span>photo : </span> {{item.photo}}</div>
-<div><span>email : </span> {{item.email}}</div>
-<div><span>phoneNumber : </span> {{item.phoneNumber}}</div>
-<div><span>where : </span> {{item.where}}</div>
-<div><span>whereDescript : </span> {{item.whereDescript}}</div>
+<h2>List of items</h2>
+<ul class ="items">
+    <!-- clickable item master list -->
+    <!-- Angular class binding : conditionnally apply class selected 
+    <li *ngFor = "let item of items" [class.selected]="item === selectedItem" (click) = "onSelect(item)"> -->
+    <li *ngFor = "let item of items">
+        <a routerLink = '/detail/{{item.id}}'>
+            <span class = "badge">{{item.photo}}</span> {{item.title}}
+        </a>
+    </li>
+</ul>
