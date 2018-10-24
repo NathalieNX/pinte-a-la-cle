@@ -1,0 +1,12 @@
+<h2>Lost item </h2>
+<div *ngIf="item-lost">
+  <h2>{{itemLost.title}} details</h2>
+  <div> <span>id : </span>{{itemLost.id}}</div>
+  <div>
+      <label>title :
+          <input [(ngModel)] = "itemLost.title" placeholder = "title">
+      </label>
+  </div>
+  <div>user : <span>{{itemLost.user}}</span></div>
+</div> 
+<button (click) = "save()">save</button>
