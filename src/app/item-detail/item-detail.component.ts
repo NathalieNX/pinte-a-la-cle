@@ -15,8 +15,6 @@ export class ItemDetailComponent implements OnInit {
   /* decorator : this property will be input from where this component is called */
   @Input() item : Item;
 
-  static nextFreeId = 0;
-
   constructor(
     protected route : ActivatedRoute,
     protected itemService : ItemService,
