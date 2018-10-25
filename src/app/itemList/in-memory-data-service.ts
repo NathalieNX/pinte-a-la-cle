@@ -1,33 +1,69 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Item } from '../item/item';
+import { ItemLost } from '../item/item-lost';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const items: Item[] = [
-        {id : 0,
+        {id : 10,
             title : "item 0",
             photo : 0,
             contact : "me 0",
             description : "here 0",
             date : "now 0",
+            user : 110,
         },
-        {id : 1,
+        {id : 11,
             title : "item 1",
             photo : 1,
             contact : "me 1",
             description : "here 1",
             date : "now 1",
+            user : 111,
         },
-        {id : 2,
+        {id : 12,
             title : "item 2",
             photo : 2,
             contact : "me 2",
             description : "here 2",
             date : "now 2",
+            user : 112,
         },
         
     ];
-    return {items};
+
+    const itemsLost: ItemLost[] = [
+        {id : 20,
+            title : "lost item 0",
+            photo : 0,
+            contact : "me 0",
+            description : "here 0",
+            date : "now 0",
+            user : 110,
+            palc : "grim0",
+        },
+        {id : 21,
+            title : "lost item 1",
+            photo : 1,
+            contact : "me 1",
+            description : "here 1",
+            date : "now 1",
+            user : 111,
+            palc : "grim1",
+        },
+        {id : 22,
+            title : "lost item 2",
+            photo : 2,
+            contact : "me 2",
+            description : "here 2",
+            date : "now 2",
+            user : 112,
+            palc : "grim2",
+        },
+        
+    ];
+
+    return {items, itemsLost};
   }
 
   // Overrides the genId method to ensure that a hero always has an id.

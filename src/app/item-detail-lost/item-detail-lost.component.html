@@ -1,17 +1,17 @@
-<h2>Lost item </h2>
-<div>
+<div *ngIf="itemLost">
   <h2>{{itemLost.title}} details</h2>
-  <!-- <div> <span>id : </span>{{itemLost.id}}</div> -->
+  <div> <span>id : </span>{{itemLost.id}}</div>
   <div>
       <label>title :
           <input [(ngModel)] = "itemLost.title" placeholder = "title">
       </label>
   </div>
   <div>
-    <label>date :
-        <input [(ngModel)] = "itemLost.date" placeholder = "date">
+    <label>title :
+        <input [(ngModel)] = "itemLost.palc" placeholder = "palc">
     </label>
-</div>
+  </div> 
   <div>user : <span>{{itemLost.user}}</span></div>
 </div> 
 <button (click) = "save()">save</button>
+<button (click) = "goBack()">go back</button>

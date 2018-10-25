@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemLost } from '../../item/item-lost';
 
 @Component({
   selector: 'app-new-item-lost',

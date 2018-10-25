@@ -7,5 +7,30 @@
         <a routerLink = '/detail/{{item.id}}'>
             <span class = "badge">{{item.photo}}</span> {{item.title}}
         </a>
+        <button class="delete" title="delete item" (click)="deleteItem(item)">x</button>
     </li>
 </ul>
+
+<h2>List of lost items</h2>
+<ul class ="itemslost">
+    <!-- clickable item master list -->
+    <!-- Angular class binding : conditionnally apply class selected 
+    <li *ngFor = "let item of items" [class.selected]="item === selectedItem" (click) = "onSelect(item)"> -->
+    <li *ngFor = "let itemLost of itemsLost">
+        <a routerLink = '/detail/{{itemLost.id}}'>
+            <span class = "badge">{{itemLost.photo}}</span> {{itemLost.title}}
+        </a>
+        <button class="delete" title="delete lost item" (click)="deleteItemLost(itemLost)">x</button>
+    </li>
+</ul>
+
+<h2>Add a new item</h2>
+<div>
+    <label>Item title :
+      <input #itemTitle />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="addItem(itemTitle.value); itemTitle.value=''">
+      add
+    </button>
+  </div>

@@ -5,4 +5,5 @@ export class Item {
     contact : string;
     description : string;
     date : string;
+    user : number;
 }

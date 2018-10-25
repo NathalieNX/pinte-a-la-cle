@@ -14,6 +14,9 @@ import { ItemsComponent } from './items/items.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ItemSearchComponent } from './item-search/item-search.component';
+import { NewItemLostComponent } from './view-new-item/new-item-lost/new-item-lost.component';
+import { ItemDetailLostComponent } from './item-detail-lost/item-detail-lost.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ItemsComponent,
     ItemDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    ItemSearchComponent,
+    NewItemLostComponent,
+    ItemDetailLostComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,41 +2,41 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Item } from '../item/item';
+import { ItemLost } from '../item/item-lost';
 import { ItemService } from '../item.service';
+import {ItemDetailComponent } from '../item-detail/item-detail.component';
 
 @Component({
-  selector: 'app-item-detail',
-  templateUrl: './item-detail.component.html',
-  styleUrls: ['./item-detail.component.css']
+  selector: 'app-item-detail-lost',
+  templateUrl: './item-detail-lost.component.html',
+  styleUrls: ['./item-detail-lost.component.css']
 })
-export class ItemDetailComponent implements OnInit {
+export class ItemDetailLostComponent extends ItemDetailComponent implements OnInit {
 
-  /* decorator : this property will be input from where this component is called */
-  @Input() item : Item;
-
-  static nextFreeId = 0;
+  @Input() itemLost : ItemLost;
 
   constructor(
     protected route : ActivatedRoute,
     protected itemService : ItemService,
     protected location : Location
-  ) { }
+  ) {
+    super(route, itemService, location)
+   }
 
   ngOnInit() : void {
-    this.getItem();
+    this.getItemLost();
   }
 
-  getItem() : void {
+  getItemLost() : void {
     /* route.snapshot is a static image of rout info
     *  paramMap is dict of route parameter values
     *  the key id returns the id */
     const id = +this.route.snapshot.paramMap.get('id');
-    this.itemService.getItem(id).subscribe(item => this.item = item);
+    this.itemService.getItemLost(id).subscribe(itemLost => this.itemLost = itemLost);
   }
 
   save(): void {
-    this.itemService.updateItem(this.item).subscribe( () => this.goBack());
+    this.itemService.updateItemLost(this.itemLost).subscribe( () => this.goBack());
   }
 
   goBack() : void {
