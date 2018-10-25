@@ -17,6 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ItemSearchComponent } from './item-search/item-search.component';
 import { NewItemLostComponent } from './view-new-item/new-item-lost/new-item-lost.component';
 import { ItemDetailLostComponent } from './item-detail-lost/item-detail-lost.component';
+import { ViewLoginComponent } from './view-login/view-login.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ItemDetailLostComponent } from './item-detail-lost/item-detail-lost.com
     ItemSearchComponent,
     NewItemLostComponent,
     ItemDetailLostComponent,
+    ViewLoginComponent,
   ],
   imports: [
     BrowserModule,

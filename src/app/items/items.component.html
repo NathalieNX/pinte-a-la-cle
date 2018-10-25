@@ -17,7 +17,7 @@
     <!-- Angular class binding : conditionnally apply class selected 
     <li *ngFor = "let item of items" [class.selected]="item === selectedItem" (click) = "onSelect(item)"> -->
     <li *ngFor = "let itemLost of itemsLost">
-        <a routerLink = '/detail/{{itemLost.id}}'>
+        <a routerLink = '/detail-lost/{{itemLost.id}}'>
             <span class = "badge">{{itemLost.photo}}</span> {{itemLost.title}}
         </a>
         <button class="delete" title="delete lost item" (click)="deleteItemLost(itemLost)">x</button>

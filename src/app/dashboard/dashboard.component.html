@@ -8,7 +8,7 @@
 </div>
 <h3>Top lost items</h3>
 <div class="grid grid-pad">
-  <a *ngFor = "let itemLost of itemsLost" class = "col-1-4" routerLink = "/detail/{{itemLost.id}}">
+  <a *ngFor = "let itemLost of itemsLost" class = "col-1-4" routerLink = "/detail-lost/{{itemLost.id}}">
     <div class = "module itemLost">
       <h4>{{itemLost.title}}</h4>
     </div>

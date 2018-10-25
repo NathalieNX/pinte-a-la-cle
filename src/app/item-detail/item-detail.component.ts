@@ -26,7 +26,7 @@ export class ItemDetailComponent implements OnInit {
   }
 
   getItem() : void {
-    /* route.snapshot is a static image of rout info
+    /* route.snapshot is a static image of route info
     *  paramMap is dict of route parameter values
     *  the key id returns the id */
     const id = +this.route.snapshot.paramMap.get('id');

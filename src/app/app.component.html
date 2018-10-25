@@ -1,11 +1,13 @@
 <h1>{{title}}</h1>>
-<nav>
-    <!-- Use RouterModule public directive routerLink to set route -->
-    <a routerLink = "/dashboard">Dashboard</a>
-    <a routerLink = "/items">Items</a>
-    <a routerLink = "/newlost">New Lost Item</a>
-    <a routerLink = "/details/20">Item 20</a>
+<div>
+    <nav>
+        <!-- Use RouterModule public directive routerLink to set route -->
+        <a routerLink = "/dashboard">Dashboard</a>
+        <a routerLink = "/items">Items</a>
+        <a routerLink = "/newlost">New Lost Item</a>
+        <a routerLink = "/login">Log out</a>
     </nav>
+</div>
 <router-outlet></router-outlet>
 <app-messages></app-messages>
 

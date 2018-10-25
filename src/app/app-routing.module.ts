@@ -5,15 +5,17 @@ import { ItemsComponent } from "./items/items.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { ItemDetailLostComponent } from './item-detail-lost/item-detail-lost.component';
+import {ViewLoginComponent} from './view-login/view-login.component';
 
 import { NewItemLostComponent } from './view-new-item/new-item-lost/new-item-lost.component'
 
 const routes : Routes = [
-  { path : '', redirectTo : '/dashboard', pathMatch : 'full' },
+  { path : '', redirectTo : '/login', pathMatch : 'full' },
+  { path : 'login', component : ViewLoginComponent },
   { path : 'items', component : ItemsComponent },
   { path : 'dashboard', component : DashboardComponent },
   { path : 'detail/:id', component : ItemDetailComponent },
-  { path : 'detail/:id', component : ItemDetailLostComponent },
+  { path : 'detail-lost/:id', component : ItemDetailLostComponent },
   { path : 'newlost', component : NewItemLostComponent },
 ];
 

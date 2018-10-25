@@ -5,7 +5,6 @@ import { Observable, of } from 'rxjs';
 import { Item } from './item/item';
 import { ItemLost } from './item/item-lost';
 import { MessageService } from './message.service';
-import { ITEMS } from './itemList/itemList';
 
 /* The itemes web API expects a special header in HTTP save requests.
 *  That header is in the httpOptions constant defined in the ItemService. */
