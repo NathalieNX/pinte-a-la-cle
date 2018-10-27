@@ -98,7 +98,7 @@ export class ItemService {
   }
 
   updateItemLost(itemLost : ItemLost) : Observable<any> {
-    return this.http.put(this.itemsUrl, itemLost, httpOptions) // httpOptions is defined above in consts
+    return this.http.put(this.itemsLostUrl, itemLost, httpOptions) // httpOptions is defined above in consts
     .pipe(
       tap(_ => this.log(`updated lost item id=${itemLost.id}`)), // taps into flow of observables
       catchError(this.handleError<any>('UpdateItemLost')) // invoke handleError

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "nodemon ./bin/www",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -21,7 +21,11 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "angular-in-memory-web-api": "^0.6.1",
+    "bluebird": "^3.5.2",
     "core-js": "^2.5.4",
+    "mongoose": "^5.3.6",
+    "mongoose-paginate": "^5.0.3",
+    "nodemon": "^1.18.5",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
