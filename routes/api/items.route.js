@@ -1,17 +1,17 @@
 
 // API layer
 
-var express = require('express')
-var router = express.Router()
+var express = require('express');
+var router = express.Router();
 
-// Getting the Todo Controller that we just created
+// Getting the Item Controller that we just created
 var ItemController = require('../../controllers/item.controller');
 
 // Map each API to the Controller Functions
-router.get('/', ToDoController.getItem)
-router.post('/', ToDoController.createItem)
-router.put('/', ToDoController.updateItem)
-router.delete('/:id',ToDoController.removeItem)
+router.get('/', ItemController.getItems);
+router.post('/', ItemController.createItem);
+router.put('/', ItemController.updateItem);
+router.delete('/:id', ItemController.removeItem);
 
 
 // Export the Router

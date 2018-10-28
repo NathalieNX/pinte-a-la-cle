@@ -25,13 +25,13 @@ exports.createItem = async function(req, res, next){
     // Req.Body contains the form submit values.
     // TODO use item class ?
     var item = {
-        id : number,
-        title : string,
-        photo : number,
-        contact : string,
-        description : string,
-        date : string,
-        user : number,
+        id : req.body.id,
+        title : req.body.title,
+        photo : req.body.photo,
+        contact : req.body.contact,
+        description : req.body.description,
+        date : req.body.date,
+        user : req.body.user
     }
     try{   
         // Calling the Service function with the new object from the Request Body

@@ -4,16 +4,16 @@ var mongoosePaginate = require('mongoose-paginate')
 // data layer
 
 var ItemSchema = new mongoose.Schema({
-    id : number,
-    title : string,
-    photo : number,
-    contact : string,
-    description : string,
-    date : string,
-    user : number,
+    id : Number,
+    title : String,
+    photo : Number,
+    contact : String,
+    description : String,
+    date : String,
+    user : Number,
 })
 
-ItemSchema.plugin(mongoosePaginate)
-const Item = mongoose.model('Item', ItemSchema)
+ItemSchema.plugin(mongoosePaginate);
+const Item = mongoose.model('Item', ItemSchema);
 
 module.exports = Item;
