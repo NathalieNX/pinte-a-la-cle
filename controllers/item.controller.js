@@ -2,14 +2,14 @@
 // controller layer
 
 // Accessing the Service that we just created
-var ItemService = require('../services/item.service')
+var ItemService = require('../services/item.service');
 // Saving the context of this module inside the _this variable
-_this = this
+_this = this;
 
 // Async Controller function to get the Item List
 exports.getItems = async function(req, res, next){
     // Check the existence of the query parameters, If the exists doesn't exists assign a default value
-    var page = req.query.page ? req.query.page : 1
+    var page = req.query.page ? req.query.page : 1;
     var limit = req.query.limit ? req.query.limit : 10; 
     try{
         var items = await ItemService.getItems({}, page, limit)
