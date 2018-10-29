@@ -26,11 +26,20 @@
 
 <h2>Add a new item</h2>
 <div>
-    <label>Item title :
+    <label>New item title :
       <input #itemTitle />
     </label>
     <!-- (click) passes input value to add() and then clears the input -->
     <button (click)="addItem(itemTitle.value); itemTitle.value=''">
       add
     </button>
-  </div>
+</div>
+<div>
+    <label>New lost item title :
+      <input #itemLostTitle />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="addItemLost(itemLostTitle.value); itemLostTitle.value=''">
+      add
+    </button>
+</div>

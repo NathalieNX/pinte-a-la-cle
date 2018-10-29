@@ -18,6 +18,7 @@ import { ItemSearchComponent } from './item-search/item-search.component';
 import { NewItemLostComponent } from './view-new-item/new-item-lost/new-item-lost.component';
 import { ItemDetailLostComponent } from './item-detail-lost/item-detail-lost.component';
 import { ViewLoginComponent } from './view-login/view-login.component';
+import { ViewItemsLostComponent } from './view-items-lost/view-items-lost.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ViewLoginComponent } from './view-login/view-login.component';
     NewItemLostComponent,
     ItemDetailLostComponent,
     ViewLoginComponent,
+    ViewItemsLostComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,9 +40,9 @@ import { ViewLoginComponent } from './view-login/view-login.component';
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot( 
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    //HttpClientInMemoryWebApiModule.forRoot( 
+    //  InMemoryDataService, { dataEncapsulation: false }
+    //)
 
   ],
   providers: [],

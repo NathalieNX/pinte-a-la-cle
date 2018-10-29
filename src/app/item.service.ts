@@ -20,14 +20,16 @@ const httpOptions = {
 })
 export class ItemService {
 
-  private itemsUrl = 'api/items';  // URL to web api
-  private itemsLostUrl = 'api/itemsLost';  
+  private apiUrl = 'http://localhost:3000';
+  private itemsUrl = `${this.apiUrl}/api/items`;  // URL to web api
+  private itemsLostUrl = `${this.apiUrl}/api/itemsLost`;  
 
   constructor(private http: HttpClient, private messageService : MessageService) { }
 
   getItem(id : number) : Observable<Item> {
     // TODO : send the message after fetching item
     const url = `${this.itemsUrl}/${id}`;
+    console.log("get result :", this.http.get<Item>(url));
     return this.http.get<Item>(url) // swapped of with http.get
     .pipe(
       tap(_ => this.log(`fetched item id=${id}`)), // taps into flow of observables
@@ -49,6 +51,7 @@ export class ItemService {
     // all HttpClient methods return a RxJS observable of something
     // in htis case the observable is an array of Item which will only ever emit once (at return)
     // this.itemsUrl returns an untyped JSON obj : casting it to Item[] ensures an array of Item return
+    console.log("get result :", this.http.get<Item[]>(this.itemsUrl));
     return this.http.get<Item[]>(this.itemsUrl) // swapped of with http.get
       .pipe(
         tap(items => this.log('fetched items')), // taps into flow of observables
@@ -85,6 +88,14 @@ export class ItemService {
     .pipe(
       tap((item: Item) => this.log(`added item w/ id=${item.id}`)),
       catchError(this.handleError<Item>('addItem'))
+    );
+  }
+
+  addItemLost (itemLost: ItemLost): Observable<ItemLost> {
+    return this.http.post<ItemLost>(this.itemsLostUrl, itemLost, httpOptions)
+    .pipe(
+      tap((itemLost: ItemLost) => this.log(`added lost item w/ id=${itemLost.id}`)),
+      catchError(this.handleError<ItemLost>('addItemLost'))
     );
   }
 

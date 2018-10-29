@@ -34,9 +34,9 @@ app.use('/api', api);
 module.exports = app;
 
 mongoose.Promise = bluebird
-mongoose.connect('mongodb://127.0.0.1:27017/palcitems', { useMongoClient: true})
-.then(()=> { console.log(`Succesfully Connected to the Mongodb Database  at URL : mongodb://127.0.0.1:27017/palcitems`)})
-.catch(()=> { console.log(`Error Connecting to the Mongodb Database at URL : mongodb://127.0.0.1:27017/palcitems`)})
+mongoose.connect('mongodb://127.0.0.1:27017/palcdb', { useMongoClient: true})
+.then(()=> { console.log(`Succesfully Connected to the Mongodb Database  at URL : mongodb://127.0.0.1:27017/palcdb`)})
+.catch(()=> { console.log(`Error Connecting to the Mongodb Database at URL : mongodb://127.0.0.1:27017/palcdb`)})
 
 /* Frontend Application will be on http://localhost:4200, which is different origin from http://localhost:3000. 
  * That’s why the CORS policy of Browsers blocks these kinds of request.

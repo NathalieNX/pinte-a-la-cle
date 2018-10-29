@@ -9,6 +9,7 @@ var ItemController = require('../../controllers/item.controller');
 
 // Map each API to the Controller Functions
 router.get('/', ItemController.getItems);
+router.get('/:id', ItemController.getItem);
 router.post('/', ItemController.createItem);
 router.put('/', ItemController.updateItem);
 router.delete('/:id', ItemController.removeItem);
