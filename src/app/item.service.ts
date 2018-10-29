@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Item } from './item/item';
@@ -20,9 +20,12 @@ const httpOptions = {
 })
 export class ItemService {
 
-  private apiUrl = 'http://localhost:3000';
-  private itemsUrl = `${this.apiUrl}/api/items`;  // URL to web api
-  private itemsLostUrl = `${this.apiUrl}/api/itemsLost`;  
+  //private apiUrl = 'http://localhost:3000';
+  //private itemsUrl = `${this.apiUrl}/api/items`;  // URL to web api
+  //private itemsLostUrl = `${this.apiUrl}/api/itemsLost`;  
+
+  private itemsUrl = `api/items`;  // URL to web api
+  private itemsLostUrl = `api/itemsLost`;  
 
   constructor(private http: HttpClient, private messageService : MessageService) { }
 
@@ -54,7 +57,7 @@ export class ItemService {
     console.log("get result :", this.http.get<Item[]>(this.itemsUrl));
     return this.http.get<Item[]>(this.itemsUrl) // swapped of with http.get
       .pipe(
-        tap(items => this.log('fetched items')), // taps into flow of observables
+        tap(_ => this.log('fetched items')), // taps into flow of observables
         catchError(this.handleError('getItems', [])) // invoke handleError
       ); 
   }
@@ -65,7 +68,7 @@ export class ItemService {
     // this.itemsUrl returns an untyped JSON obj : casting it to Item[] ensures an array of Item return
     return this.http.get<ItemLost[]>(this.itemsLostUrl) // swapped of with http.get
       .pipe(
-        tap(itemsLost => this.log('fetched lost items')), // taps into flow of observables
+        tap(_ => this.log('fetched lost items')), // taps into flow of observables
         catchError(this.handleError('getItems', [])) // invoke handleError
       ); 
   }

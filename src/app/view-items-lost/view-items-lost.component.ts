@@ -24,13 +24,13 @@ export class ViewItemsLostComponent implements OnInit {
     this.itemService.getItemsLost().subscribe(itemsLost => this.itemsLost = itemsLost);
   }
 
-  addItem(title: string): void {
+  addItemLost(title: string): void {
     title = title.trim();
     if (!title) { return; }
-    this.itemService.addItem({ title } as Item)
-      // When addItem saves successfully, subscribe callback receives new item and pushes it into to items list for display
-      .subscribe(item => {      
-        this.items.push(item);
+    this.itemService.addItemLost({ title } as ItemLost)
+      // When addItemLost saves successfully, subscribe callback receives new item and pushes it into to items list for display
+      .subscribe(itemLost => {      
+        this.itemsLost.push(itemLost);
       });
   }
 

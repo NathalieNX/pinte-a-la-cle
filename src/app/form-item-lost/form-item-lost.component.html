@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>New Lost Item</h1>
+  <form (ngSubmit)="onSubmit()" #formItemLost="ngForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" required 
+        [(ngModel)]="model.title" title="title">
+    </div>
+
+    <div class="form-group">
+      <label for="photo">Photo</label>
+      <input type="text" class="form-control" id="photo"
+        [(ngModel)]="model.photo" photo="photo">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="button" class="btn btn-default" (click)="newItemLost(); formItemLost.reset()">Start over</button>
+
+  </form>
+</div>
+
+TODO make sure entries are valid

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule }from '@angular/common/http';
 
@@ -15,10 +16,11 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ItemSearchComponent } from './item-search/item-search.component';
-import { NewItemLostComponent } from './view-new-item/new-item-lost/new-item-lost.component';
 import { ItemDetailLostComponent } from './item-detail-lost/item-detail-lost.component';
 import { ViewLoginComponent } from './view-login/view-login.component';
 import { ViewItemsLostComponent } from './view-items-lost/view-items-lost.component';
+import { ViewNewLostComponent } from './view-new-lost/view-new-lost.component';
+import { FormItemLostComponent } from './form-item-lost/form-item-lost.component';
 
 @NgModule({
   declarations: [
@@ -28,21 +30,23 @@ import { ViewItemsLostComponent } from './view-items-lost/view-items-lost.compon
     MessagesComponent,
     DashboardComponent,
     ItemSearchComponent,
-    NewItemLostComponent,
     ItemDetailLostComponent,
     ViewLoginComponent,
     ViewItemsLostComponent,
+    ViewNewLostComponent,
+    FormItemLostComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    //HttpClientInMemoryWebApiModule.forRoot( 
-    //  InMemoryDataService, { dataEncapsulation: false }
-    //)
+    HttpClientInMemoryWebApiModule.forRoot( 
+      InMemoryDataService, { dataEncapsulation: false }
+    )
 
   ],
   providers: [],

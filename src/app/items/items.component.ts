@@ -49,7 +49,7 @@ export class ItemsComponent implements OnInit {
     this.itemService.addItemLost({ title } as ItemLost)
       // When addItemLost saves successfully, subscribe callback receives new item and pushes it into to items list for display
       .subscribe(itemLost => {      
-        this.items.push(itemLost);
+        this.itemsLost.push(itemLost);
       });
   }
 
