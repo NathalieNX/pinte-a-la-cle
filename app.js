@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors');
 var path = require('path');
 var logger = require('morgan'); 
 var createError = require('http-errors');
@@ -42,9 +43,19 @@ mongoose.connect('mongodb://127.0.0.1:27017/palcdb', { useMongoClient: true})
  * That’s why the CORS policy of Browsers blocks these kinds of request.
  * We need to allow these kinds of requests from the Backend’s preflight response. */
 
+var corsOptions = {
+  "origin": "http://localhost:4200",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors(corsOptions));
+/*
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost:4200");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     next();
   });
+*/

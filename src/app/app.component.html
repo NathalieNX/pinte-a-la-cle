@@ -1,15 +1,14 @@
-<h1>{{title}}</h1>>
 <div>
-    <nav>
+    <nav class="nav">
+        <span class="navbar-brand mb-0 h1">{{title}}</span>
         <!-- Use RouterModule public directive routerLink to set route -->
-        <a routerLink = "/dashboard">Dashboard</a>
-        <a routerLink = "/itemsLost">Lost items</a>
-        <a routerLink = "/newLost">New lost item</a>
-        <a routerLink = "/login">Log out</a>
-
+        <a class="nav-link" routerLink = "/dashboard">Dashboard</a>
+        <a class="nav-link" routerLink = "/itemsLost">Lost items</a>
+        <a class="nav-link" routerLink = "/newLost">New lost item</a>
+        <a class="nav-link" routerLink = "/login">Log out</a>
     </nav>
 </div>
 <router-outlet></router-outlet>
 <app-messages></app-messages>
-
-Access to XMLHttpRequest at 'http://localhost:3000/api/items' from origin 'http://localhost:4200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+Try item.service l57 for debugging
+console.log("get result :" [...]

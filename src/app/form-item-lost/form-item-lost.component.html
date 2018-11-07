@@ -1,21 +1,72 @@
 <div class="container">
   <h1>New Lost Item</h1>
   <form (ngSubmit)="onSubmit()" #formItemLost="ngForm">
+
     <div class="form-group">
       <label for="title">Title</label>
       <input type="text" class="form-control" id="title" required 
-        [(ngModel)]="model.title" title="title">
+        [(ngModel)]="model.title" name="title" #spy>
+    </div>
+    {{spy.classname}}
+    <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+      Title is required
     </div>
 
     <div class="form-group">
       <label for="photo">Photo</label>
       <input type="text" class="form-control" id="photo"
-        [(ngModel)]="model.photo" photo="photo">
+        [(ngModel)]="model.photo" name="photo">
     </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
-    <button type="button" class="btn btn-default" (click)="newItemLost(); formItemLost.reset()">Start over</button>
+    <div class="form-group">
+      <label for="contact">Contact</label>
+      <input type="text" class="form-control" id="description" required
+        [(ngModel)]="model.contact" name="contact">
+    </div>
+    <div [hidden]="contact.valid || contact.pristine" class="alert alert-danger">
+      Contact is required
+    </div>
 
+    <div class="form-group">
+      <label for="description">description</label>
+      <input type="text" class="form-control" id="description" required
+        [(ngModel)]="model.description" name="description">
+    </div>
+    <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+      Description is required
+    </div>
+
+    <div class="form-group">
+      <label for="date">date</label>
+      <input type="text" class="form-control" id="date"
+        [(ngModel)]="model.date" name="date">
+    </div>
+
+    <div class="form-group">
+      <label for="date">date</label>
+      <div class='input-group date' id='datetimepicker'>
+        <input type='text' class="  form-control" id="date"
+          [(ngModel)]="model.date" name="date"/>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(function () {
+        $('#datetimepicker').datetimepicker();
+      });
+    </script>
+
+    <div class="form-group">
+      <label for="palc">palc</label>
+      <input type="text" class="form-control" id="palc" 
+        [(ngModel)]="model.palc" name="palc">
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!formItemLost.form.valid">Submit</button>
+    <button type="button" class="btn btn-default" (click)="newItemLost(); formItemLost.reset()">Start over</button>
+    <button type="goBack" class="btn btn-default" (click) = "goBack()">go back</button>
   </form>
 </div>
 

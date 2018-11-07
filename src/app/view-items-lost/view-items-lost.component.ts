@@ -24,6 +24,7 @@ export class ViewItemsLostComponent implements OnInit {
     this.itemService.getItemsLost().subscribe(itemsLost => this.itemsLost = itemsLost);
   }
 
+  /*
   addItemLost(title: string): void {
     title = title.trim();
     if (!title) { return; }
@@ -33,6 +34,7 @@ export class ViewItemsLostComponent implements OnInit {
         this.itemsLost.push(itemLost);
       });
   }
+  */
 
   deleteItemLost(itemLost: ItemLost): void {
     this.itemsLost = this.itemsLost.filter(h => h !== itemLost);

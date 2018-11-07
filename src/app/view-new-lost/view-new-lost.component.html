@@ -1,6 +1,3 @@
-<label>
-  Name:
-  <input type="text" [formControl]="newItemLost.title">
-</label>
-<button (click) = "save()">save</button>
+<app-form-item-lost></app-form-item-lost>
+<button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
 <button (click) = "goBack()">go back</button>

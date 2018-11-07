@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { ItemLost } from '../item/item-lost';
 import { ItemService } from '../item.service';
+import { FormItemLostComponent } from '../form-item-lost/form-item-lost.component';
 
 @Component({
   selector: 'app-view-new-lost',
@@ -14,21 +14,8 @@ import { ItemService } from '../item.service';
 
 export class ViewNewLostComponent implements OnInit {
   
-  itemLost = new ItemLost();
-
-  newItemLost = new FormGroup({
-    title : new FormControl(''),
-    photo : new FormControl(''),
-    contact : new FormControl(''),
-    description : new FormControl(''),
-    date : new FormControl(''),
-    palc : new FormControl(''),
-  })
-  
-  ngOnInit() { 
-    
-  }
-  
+  newItemLost : ItemLost;
+  formItemLost : FormItemLostComponent;
 
   /* identify class ItemsComponent as a ItemService injection site */
   constructor(
@@ -37,10 +24,26 @@ export class ViewNewLostComponent implements OnInit {
     protected location : Location
   ) { }
 
-  
+  ngOnInit() { 
+    this.newItemLost = new ItemLost;
+    console.log("view new lost : itemLost", this.newItemLost);
+    this.newItemLost = {
+      id : 88,
+      title : "itemLost88",
+      photo : 0,
+      contact : "contact",
+      description : "description",
+      date : "now",
+      user : 88,
+      palc : "palc"
+    }
+    this.formItemLost = new FormItemLostComponent(this.route, this.itemService, this.location);
+  }
 
-  save(): void {
-    this.itemService.addItemLost(this.itemLost).subscribe( () => this.goBack());
+  onSubmit(): void {
+    console.log(this.formItemLost.model.title);
+    this.newItemLost = this.formItemLost.model;
+    this.itemService.addItemLost(this.newItemLost).subscribe( () => this.goBack());
   }
 
   goBack() : void {

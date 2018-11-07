@@ -1,4 +1,4 @@
-<h3>Top items</h3>
+<h2>Top items</h2>
 <div class="grid grid-pad">
   <a *ngFor = "let item of items" class = "col-1-4" routerLink = "/detail/{{item.id}}">
     <div class = "module item">
@@ -6,7 +6,7 @@
     </div>
   </a>
 </div>
-<h3>Top lost items</h3>
+<h2>Top lost items</h2>
 <div class="grid grid-pad">
   <a *ngFor = "let itemLost of itemsLost" class = "col-1-4" routerLink = "/detail-lost/{{itemLost.id}}">
     <div class = "module itemLost">

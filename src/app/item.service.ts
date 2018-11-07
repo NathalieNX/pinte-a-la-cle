@@ -32,7 +32,7 @@ export class ItemService {
   getItem(id : number) : Observable<Item> {
     // TODO : send the message after fetching item
     const url = `${this.itemsUrl}/${id}`;
-    console.log("get result :", this.http.get<Item>(url));
+
     return this.http.get<Item>(url) // swapped of with http.get
     .pipe(
       tap(_ => this.log(`fetched item id=${id}`)), // taps into flow of observables
@@ -54,7 +54,7 @@ export class ItemService {
     // all HttpClient methods return a RxJS observable of something
     // in htis case the observable is an array of Item which will only ever emit once (at return)
     // this.itemsUrl returns an untyped JSON obj : casting it to Item[] ensures an array of Item return
-    console.log("get result :", this.http.get<Item[]>(this.itemsUrl));
+    console.log("Service - get result :", this.http.get<Item[]>(this.itemsUrl).subscribe(val => console.log(val)));
     return this.http.get<Item[]>(this.itemsUrl) // swapped of with http.get
       .pipe(
         tap(_ => this.log('fetched items')), // taps into flow of observables

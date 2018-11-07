@@ -2,7 +2,8 @@
 // service layer
 
 // Getting the Newly created Mongoose Model we just created 
-var Item = require('../models/item.model')
+var Item = require('../models/item.model');
+var ItemLost = require('../models/itemLost.model');
 
 // Saving the context of this module inside the _this variable
 _this = this
@@ -25,6 +26,23 @@ exports.getItems = async function(query, page, limit){
     }
 }
 
+exports.getItemsLost = async function(query, page, limit){
+    // Options setup for the mongoose paginate
+    var options = {
+        page,
+        limit
+    }
+    // Try Catch the awaited promise to handle the error   
+    try {
+        var itemsLost = await ItemLost.paginate(query, options);
+        // Return the item list that was returned by the mongoose promise
+        return itemsLost;
+    } catch (e) {
+        // return a Error message describing the reason 
+        throw Error('Error while Paginating Lost Items');
+    }
+}
+
 // Async function to get the item
 exports.getItem = async function(item){
     var id = item.id;
@@ -38,6 +56,22 @@ exports.getItem = async function(item){
     }
     // If no old Item Object exists return false
     if(!wantedItem){
+        return false;
+    }
+}
+
+exports.getItemLost = async function(itemLost){
+    var id = itemLost.id;
+    try{
+        console.log("Service - trying to get lost item by id...");
+        //Find the old Item Object by the Id
+        var wantedItemLost = await ItemLost.findById(id);
+        console.log("Service - ...got lost item by id.");
+    }catch(e){
+        throw Error("Error occured while Finding the lost Item");
+    }
+    // If no old Item Object exists return false
+    if(!wantedItemLost){
         return false;
     }
 }
@@ -68,6 +102,35 @@ exports.createItem = async function(item){
         console.log("Service - failed at saving item");
         // return a Error message describing the reason     
         throw Error("Error while Creating Item");
+    }
+}
+
+exports.createItemLost = async function(itemLost){
+    // Creating a new Mongoose Object by using the new keyword
+    var newItemLost = new ItemLost({
+        id : itemLost.id,
+        title : itemLost.title,
+        photo : itemLost.photo,
+        contact : itemLost.contact,
+        description : itemLost.description,
+        date : itemLost.date,
+        user : itemLost.user,
+    })
+    console.log("Service - trying to create lost item");
+    try{
+        // Saving the Item 
+        // TODO del
+        console.log("Service - trying to get lost item to save...");
+        var savedItemLost = await newItemLost.save();
+        // TODO del
+        console.log("Service - ...got lost item to save");
+        return savedItemLost;
+    }catch(e){
+        // TODO del
+        console.log(e);
+        console.log("Service - failed at saving lost item");
+        // return a Error message describing the reason     
+        throw Error("Error while Creating Lost Item");
     }
 }
 
@@ -118,19 +181,57 @@ exports.updateItem = async function(item){
     */
 }
 
-exports.deleteItem = async function(id){
+exports.updateItemLost = async function(itemLost){
+    var id = itemLost.id;
+    try{
+        //Find the old Lost Item Object by the Id
+        console.log("Service - trying to find lost item to update by id ...");
+        var oldItemLost = await ItemLost.findById(id);
+        console.log("Service - ... found lost item to update by id.");
+    }catch(e){
+        throw Error("Error occured while Finding the lost Item");
+    }
+    // If no old Lost Item Object exists return false
+    if(!oldItemLost){
+        return false;
+    }
+    console.log("old lost item :", oldItemLost)
+    //Edit the Item Object
+    oldItemLost.id = itemLost.id,
+    oldItemLost.title = itemLost.title,
+    oldItemLost.photo = itemLost.photo,
+    oldItemLost.contact = itemLost.contact,
+    oldItemLost.description = itemLost.description,
+    oldItemLost.date = itemLost.date,
+    oldItemLost.user = itemLost.user,
+    console.log("becomes : ", oldItemLost);
+
+    try{
+        console.log("Service - trying to save...");
+        //Find the old Lost Item Object by the Id
+        var savedItemLost = await ItemLost.replaceOne({_id:id}, oldItemLost);
+        console.log("Service - ...saved Lost item.");
+        return savedItemLost;
+    }catch(e){
+        console.log(e);
+        throw Error("Error occured while saving the Lost Item");
+    }
+}
+
+
+exports.deleteItemLost = async function(id){
     // Delete the item
     try{
-        console.log("Service - trying to delete item ...");
+        console.log("Service - trying to delete lost item ...");
         console.log(id);
-        var deleted = await Item.remove({_id:id});
-        console.log("Service - ... got item to delete");
+        var deleted = await ItemLost.remove({_id:id});
+        console.log("Service - ... got lost item to delete");
         if(deleted.n === 0){
-            return ("Service - could not delete item")
+            return ("Service - could not delete lost item")
         }
         return deleted
     }catch(e){
         console.log(e);
-        throw Error("Error Occured while Deleting the Item");
+        throw Error("Error Occured while Deleting the Lost Item");
     }
 }
