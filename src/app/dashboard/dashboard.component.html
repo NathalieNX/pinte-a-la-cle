@@ -1,18 +1,29 @@
-<h2>Top items</h2>
-<div class="grid grid-pad">
-  <a *ngFor = "let item of items" class = "col-1-4" routerLink = "/detail/{{item.id}}">
-    <div class = "module item">
-      <h4>{{item.title}}</h4>
-    </div>
-  </a>
+<div class="container-fluid">
+  <app-item-search></app-item-search>
 </div>
-<h2>Top lost items</h2>
-<div class="grid grid-pad">
-  <a *ngFor = "let itemLost of itemsLost" class = "col-1-4" routerLink = "/detail-lost/{{itemLost.id}}">
-    <div class = "module itemLost">
-      <h4>{{itemLost.title}}</h4>
-    </div>
-  </a>
+<div class="container-fluid">
+  <h2>Top items</h2>
+  <div class="grid grid-pad">
+    <a *ngFor = "let item of items" class = "col-1-4" routerLink = "/detail/{{item.id}}">
+      <div class="panel panel-default">
+        <div class="panel-body">    
+          <div class = "module item">
+            <h4>{{item.title}}</h4>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <h2>Top lost items</h2>
+  <div class="grid grid-pad">
+    <a *ngFor = "let itemLost of itemsLost" class = "col-1-4" routerLink = "/detail-lost/{{itemLost.id}}">
+      <div class="panel panel-default">
+          <div class="panel-body">    
+            <div class = "module itemLost">
+              <h4>{{itemLost.title}}</h4>
+            </div>
+          </div>
+        </div>
+    </a>
+  </div>
 </div>
-
-<app-item-search></app-item-search>

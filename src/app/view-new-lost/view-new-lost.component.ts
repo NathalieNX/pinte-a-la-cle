@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 
 import { ItemLost } from '../item/item-lost';
 import { ItemService } from '../item.service';
-import { FormItemLostComponent } from '../form-item-lost/form-item-lost.component';
+import { FormNewItemLostComponent } from '../form-new-item-lost/form-new-item-lost.component';
 
 @Component({
   selector: 'app-view-new-lost',
@@ -15,7 +15,7 @@ import { FormItemLostComponent } from '../form-item-lost/form-item-lost.componen
 export class ViewNewLostComponent implements OnInit {
   
   newItemLost : ItemLost;
-  formItemLost : FormItemLostComponent;
+  formNewItemLost : FormNewItemLostComponent;
 
   /* identify class ItemsComponent as a ItemService injection site */
   constructor(
@@ -37,12 +37,12 @@ export class ViewNewLostComponent implements OnInit {
       user : 88,
       palc : "palc"
     }
-    this.formItemLost = new FormItemLostComponent(this.route, this.itemService, this.location);
+    this.formNewItemLost = new FormNewItemLostComponent(this.route, this.itemService, this.location);
   }
 
   onSubmit(): void {
-    console.log(this.formItemLost.model.title);
-    this.newItemLost = this.formItemLost.model;
+    console.log(this.formNewItemLost.model.title);
+    this.newItemLost = this.formNewItemLost.model;
     this.itemService.addItemLost(this.newItemLost).subscribe( () => this.goBack());
   }
 

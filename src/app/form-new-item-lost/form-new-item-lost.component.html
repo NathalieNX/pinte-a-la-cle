@@ -1,6 +1,6 @@
 <div class="container">
   <h1>New Lost Item</h1>
-  <form (ngSubmit)="onSubmit()" #formItemLost="ngForm">
+  <form (ngSubmit)="onSubmit()" #formNewItemLost="ngForm">
 
     <div class="form-group">
       <label for="title">Title</label>
@@ -64,8 +64,8 @@
         [(ngModel)]="model.palc" name="palc">
     </div>
 
-    <button type="submit" class="btn btn-success" [disabled]="!formItemLost.form.valid">Submit</button>
-    <button type="button" class="btn btn-default" (click)="newItemLost(); formItemLost.reset()">Start over</button>
+    <button type="submit" class="btn btn-success" [disabled]="!formNewItemLost.form.valid">Submit</button>
+    <button type="button" class="btn btn-default" (click)="newItemLost(); formNewItemLost.reset()">Start over</button>
     <button type="goBack" class="btn btn-default" (click) = "goBack()">go back</button>
   </form>
 </div>

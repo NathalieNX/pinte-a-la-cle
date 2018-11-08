@@ -7,11 +7,11 @@ import { ItemService } from '../item.service';
 
 
 @Component({
-  selector: 'app-form-item-lost',
-  templateUrl: './form-item-lost.component.html',
-  styleUrls: ['./form-item-lost.component.css']
+  selector: 'app-form-new-item-lost',
+  templateUrl: './form-new-item-lost.component.html',
+  styleUrls: ['./form-new-item-lost.component.css']
 })
-export class FormItemLostComponent implements OnInit {
+export class FormNewItemLostComponent implements OnInit {
 
   model : ItemLost;
   submitted = false;

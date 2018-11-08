@@ -8,7 +8,8 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { ItemDetailLostComponent } from './item-detail-lost/item-detail-lost.component';
 import { ViewItemsLostComponent } from './view-items-lost/view-items-lost.component';
 import { ViewNewLostComponent } from './view-new-lost/view-new-lost.component';
-import { FormItemLostComponent } from './form-item-lost/form-item-lost.component';
+import { FormNewItemLostComponent } from './form-new-item-lost/form-new-item-lost.component';
+import { FormModifyItemLostComponent } from './form-modify-item-lost/form-modify-item-lost.component';
 
 const routes : Routes = [
   { path : '', redirectTo : '/login', pathMatch : 'full' },
@@ -18,7 +19,10 @@ const routes : Routes = [
   { path : 'itemsLost', component : ViewItemsLostComponent },
   { path : 'detail/:id', component : ItemDetailComponent },
   { path : 'detail-lost/:id', component : ItemDetailLostComponent },
-  { path : 'newLost', component : FormItemLostComponent },
+  { path : 'newLost', component : FormNewItemLostComponent },
+  { path : 'modifyLost/:id', component : FormModifyItemLostComponent },
+
+
 
 ];
 

@@ -1,17 +1,27 @@
 <div *ngIf="itemLost">
-  <h2>{{itemLost.title}} details</h2>
-  <div> <span>id : </span>{{itemLost.id}}</div>
-  <div>
-      <label>title :
-          <input [(ngModel)] = "itemLost.title" placeholder = "title">
-      </label>
-  </div>
-  <div>
-    <label>palc :
-        <input [(ngModel)] = "itemLost.palc" placeholder = "palc">
-    </label>
-  </div> 
-  <div>user : <span>{{itemLost.user}}</span></div>
+    <h2>{{itemLost.title}} details</h2>
+    <div> 
+        <label>id : {{itemLost.id}}</label>
+    </div>
+    <div>
+        <label>photo : {{itemLost.photo}}</label>
+    </div>
+    <div>
+        <label>contact : {{itemLost.contact}}</label>
+        </div>
+    <div>
+        <label>description : {{itemLost.description}}</label>
+    </div>
+    <div>
+        <label>date : {{itemLost.date}}</label>
+    </div>
+    <div>
+        <label>user : {{itemLost.user}}</label>
+    </div>
+    <div>
+        <label>palc : {{itemLost.palc}}</label>
+    </div> 
 </div> 
 <button (click) = "save()">save</button>
+todo button modify
 <button (click) = "goBack()">go back</button>

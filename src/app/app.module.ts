@@ -20,7 +20,8 @@ import { ItemDetailLostComponent } from './item-detail-lost/item-detail-lost.com
 import { ViewLoginComponent } from './view-login/view-login.component';
 import { ViewItemsLostComponent } from './view-items-lost/view-items-lost.component';
 import { ViewNewLostComponent } from './view-new-lost/view-new-lost.component';
-import { FormItemLostComponent } from './form-item-lost/form-item-lost.component';
+import { FormNewItemLostComponent } from './form-new-item-lost/form-new-item-lost.component';
+import { FormModifyItemLostComponent } from './form-modify-item-lost/form-modify-item-lost.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FormItemLostComponent } from './form-item-lost/form-item-lost.component
     ViewLoginComponent,
     ViewItemsLostComponent,
     ViewNewLostComponent,
-    FormItemLostComponent,
+    FormNewItemLostComponent,
+    FormModifyItemLostComponent,
   ],
   imports: [
     BrowserModule,
