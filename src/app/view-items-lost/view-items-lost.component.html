@@ -1,24 +1,25 @@
-<h2>List of lost items</h2>
-<ul class ="itemslost">
-    <!-- clickable item master list -->
-    <!-- Angular class binding : conditionnally apply class selected 
-    <li *ngFor = "let item of items" [class.selected]="item === selectedItem" (click) = "onSelect(item)"> -->
-    <li *ngFor = "let itemLost of itemsLost">
-        <a routerLink = '/detail-lost/{{itemLost.id}}'>
-            <span class = "badge">{{itemLost.photo}}</span> {{itemLost.title}}
-        </a>
-        <button class="delete" title="delete lost item" (click)="deleteItemLost(itemLost)">x</button>
-    </li>
-</ul>
-
-<!--
-<div>
-  <label>New lost item title :
-    <input #itemLostTitle />
-  </label>
-  !-- (click) passes input value to add() and then clears the input --
-  <button (click)="addItemLost(itemLostTitle.value); itemLostTitle.value=''">
-    add
-  </button>
+<div class="container-fluid">
+  <app-item-search></app-item-search>
 </div>
--->
+<div class="container-fluid">
+  <h2>List of lost items</h2>
+  <div class="grid grid-pad">
+    <div *ngFor = "let itemLost of itemsLost" class = "col-1-4">
+      <div class="panel panel-default">
+        <div class="panel-body">    
+          <div class = "module itemLost">
+            <a routerLink = "/detail-lost/{{itemLost.id}}">
+              <span class = "badge">{{itemLost.photo}}</span>
+              <h4>{{itemLost.title}}</h4>
+            </a>
+            <button class="delete" title="modify lost item">
+              <a routerLink = "/modify-lost/{{itemLost.id}}">Modify</a>
+            </button>
+            <button class="delete" title="delete lost item" (click)="deleteItemLost(itemLost)">Delete</button>
+          </div>
+        </div>
+      </div>      
+    </div>
+    
+  </div>
+</div>

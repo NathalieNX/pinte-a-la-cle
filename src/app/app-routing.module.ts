@@ -10,6 +10,7 @@ import { ViewItemsLostComponent } from './view-items-lost/view-items-lost.compon
 import { ViewNewLostComponent } from './view-new-lost/view-new-lost.component';
 import { FormNewItemLostComponent } from './form-new-item-lost/form-new-item-lost.component';
 import { FormModifyItemLostComponent } from './form-modify-item-lost/form-modify-item-lost.component';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
 
 const routes : Routes = [
   { path : '', redirectTo : '/login', pathMatch : 'full' },
@@ -20,7 +21,8 @@ const routes : Routes = [
   { path : 'detail/:id', component : ItemDetailComponent },
   { path : 'detail-lost/:id', component : ItemDetailLostComponent },
   { path : 'newLost', component : FormNewItemLostComponent },
-  { path : 'modifyLost/:id', component : FormModifyItemLostComponent },
+  { path : 'modify-lost/:id', component : FormModifyItemLostComponent },
+  { path : 'image-upload', component : ImageUploadComponent },
 
 
 

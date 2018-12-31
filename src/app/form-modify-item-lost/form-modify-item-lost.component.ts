@@ -13,7 +13,6 @@ import { ItemService } from '../item.service';
 export class FormModifyItemLostComponent implements OnInit {
 
   @Input() itemLost : ItemLost;
-  model : ItemLost;
   submitted = false;
 
   constructor(
@@ -25,7 +24,6 @@ export class FormModifyItemLostComponent implements OnInit {
 
   ngOnInit() {
     this.getItemLost();
-    this.model = this.itemLost;
   }  
 
   getItemLost() : void {
@@ -34,12 +32,13 @@ export class FormModifyItemLostComponent implements OnInit {
     *  the key id returns the id */
     const id = +this.route.snapshot.paramMap.get('id');
     this.itemService.getItemLost(id).subscribe(itemLost => this.itemLost = itemLost);
+    console.log(this.itemLost)
   }
 
   onSubmit(): void {
     this.submitted = true;
-    console.log(this.model.title);
-    this.itemService.addItemLost(this.model).subscribe( () => this.goBack());
+    console.log(this.itemLost.title);
+    this.itemService.updateItemLost(this.itemLost).subscribe( () => this.goBack());
   }
 
   goBack() : void {

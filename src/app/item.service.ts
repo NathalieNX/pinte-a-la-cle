@@ -18,7 +18,7 @@ const httpOptions = {
   *  service is registered as a provider with the root injector */
   providedIn: 'root'
 })
-export class ItemService {
+export class ItemService { 
 
   //private apiUrl = 'http://localhost:3000';
   //private itemsUrl = `${this.apiUrl}/api/items`;  // URL to web api
@@ -79,8 +79,9 @@ export class ItemService {
       // if not search term, return empty item array.
       return of([]);
     }
+
     return this.http.get<Item[]>(`${this.itemsUrl}/?name=${term}`).pipe(
-      tap(_ => this.log(`found items matching "${term}"`)),
+      tap(_ => this.log(`term is "${term}"`)),
       catchError(this.handleError<Item[]>('searchItems', []))
     );
   }

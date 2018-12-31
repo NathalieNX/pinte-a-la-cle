@@ -28,7 +28,7 @@ export class ItemDetailLostComponent extends ItemDetailComponent implements OnIn
   }
 
   getItemLost() : void {
-    /* route.snapshot is a static image of rout info
+    /* route.snapshot is a static image of route info
     *  paramMap is dict of route parameter values
     *  the key id returns the id */
     const id = +this.route.snapshot.paramMap.get('id');
@@ -37,6 +37,11 @@ export class ItemDetailLostComponent extends ItemDetailComponent implements OnIn
 
   save(): void {
     this.itemService.updateItemLost(this.itemLost).subscribe( () => this.goBack());
+  }
+
+  modify(): void {
+    // TODO go to modify form
+    
   }
 
   goBack() : void {

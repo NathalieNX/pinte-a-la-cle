@@ -1,0 +1,13 @@
+<div ng-controller="formCtrl">
+  <h1>Change template + show saved uploads !</h1>
+  <form (ngSubmit)="onSubmit()" #formUpload="ngForm">
+    <legend>Upload a new file here:</legend>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" ng-model="upload.name" required/>
+    <br/>
+    <label for="file">File:</label>
+    <input type="file" name="file" id="file" ng-model="upload.file" ngf-select ngf-max-size="25MB" required/>
+    <br/>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

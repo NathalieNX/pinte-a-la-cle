@@ -7,8 +7,11 @@ var cookieParser = require('cookie-parser');
 
 var bluebird = require('bluebird')
 var mongoose = require('mongoose')
+var bodyParser = require('body-parser');
+var logger = require('morgan');
 
 var index = require('./routes/index.route');
+var uploads = require('./routes/api/uploads.route');
 var users = require('./routes/users.route');
 
 // Get the API route ...
@@ -26,11 +29,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// added for images
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 //Use the Routes
 app.use('/', index);
+app.use('/uploads', uploads);
 app.use('/users', users);
 //Use the API routes for all routes matching /api
 app.use('/api', api);
+//added for images
+app.use(express.static('public'));
 
 module.exports = app;
 

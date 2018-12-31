@@ -22,6 +22,8 @@ import { ViewItemsLostComponent } from './view-items-lost/view-items-lost.compon
 import { ViewNewLostComponent } from './view-new-lost/view-new-lost.component';
 import { FormNewItemLostComponent } from './form-new-item-lost/form-new-item-lost.component';
 import { FormModifyItemLostComponent } from './form-modify-item-lost/form-modify-item-lost.component';
+import { ViewModifyLostComponent } from './view-modify-lost/view-modify-lost.component';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { FormModifyItemLostComponent } from './form-modify-item-lost/form-modify
     ViewNewLostComponent,
     FormNewItemLostComponent,
     FormModifyItemLostComponent,
+    ViewModifyLostComponent,
+    ImageUploadComponent,
   ],
   imports: [
     BrowserModule,

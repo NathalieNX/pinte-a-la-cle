@@ -36,6 +36,14 @@ export class ViewItemsLostComponent implements OnInit {
   }
   */
 
+  modifyItemLost(itemLost: ItemLost): void {
+    this.itemsLost = this.itemsLost.filter(h => h !== itemLost);
+    // If you neglect to subscribe(), the service will not send the modify request to the server! As a rule, an Observable does nothing until something subscribes!
+    // When updateItemLost saves successfully, subscribe callback receives new item and pushes it into to items list for display
+    this.itemService.updateItemLost(itemLost).subscribe(itemLost => {this.itemsLost.push(itemLost);
+    });
+  }
+
   deleteItemLost(itemLost: ItemLost): void {
     this.itemsLost = this.itemsLost.filter(h => h !== itemLost);
     // If you neglect to subscribe(), the service will not send the delete request to the server! As a rule, an Observable does nothing until something subscribes!
