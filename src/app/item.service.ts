@@ -2,8 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Item } from './item/item';
-import { ItemLost } from './item/item-lost';
+import { Item } from './itemFiles/item/item';
+import { ItemLost } from './itemFiles/item/item-lost';
+import { ItemFound } from './itemFiles/item/item-found';
 import { MessageService } from './message.service';
 
 /* The itemes web API expects a special header in HTTP save requests.
@@ -25,9 +26,14 @@ export class ItemService {
   //private itemsLostUrl = `${this.apiUrl}/api/itemsLost`;  
 
   private itemsUrl = `api/items`;  // URL to web api
-  private itemsLostUrl = `api/itemsLost`;  
+  private itemsLostUrl = `api/items-lost`;  
+  private itemsFoundUrl = `api/items-found`;  
+  
 
   constructor(private http: HttpClient, private messageService : MessageService) { }
+
+  /** GET item by id */
+
 
   getItem(id : number) : Observable<Item> {
     // TODO : send the message after fetching item
@@ -50,11 +56,25 @@ export class ItemService {
     ); 
   }
 
+  getItemFound(id : number) : Observable<ItemFound> {
+    // TODO : send the message after fetching item
+    const url = `${this.itemsFoundUrl}/${id}`;
+    return this.http.get<ItemFound>(url) // swapped of with http.get
+    .pipe(
+      tap(_ => this.log(`fetched found item id=${id}`)), // taps into flow of observables
+      catchError(this.handleError<ItemFound>(`getItemFound id=${id}`)) // invoke handleError
+    ); 
+  }
+
+  /** GET all items */
+
   getItems() : Observable<Item[]> {
     // all HttpClient methods return a RxJS observable of something
     // in htis case the observable is an array of Item which will only ever emit once (at return)
     // this.itemsUrl returns an untyped JSON obj : casting it to Item[] ensures an array of Item return
-    console.log("Service - get result :", this.http.get<Item[]>(this.itemsUrl).subscribe(val => console.log(val)));
+    //TODO delete this
+    this.log("trying to get items");
+    console.log("Service - getItems - get result :", this.http.get<Item[]>(this.itemsUrl).subscribe(val => console.log(val)));
     return this.http.get<Item[]>(this.itemsUrl) // swapped of with http.get
       .pipe(
         tap(_ => this.log('fetched items')), // taps into flow of observables
@@ -64,16 +84,31 @@ export class ItemService {
 
   getItemsLost() : Observable<ItemLost[]> {
     // all HttpClient methods return a RxJS observable of something
-    // in htis case the observable is an array of Item which will only ever emit once (at return)
-    // this.itemsUrl returns an untyped JSON obj : casting it to Item[] ensures an array of Item return
+    // in htis case the observable is an array of ItemLost which will only ever emit once (at return)
+    // this.itemsLostUrl returns an untyped JSON obj : casting it to ItemLost[] ensures an array of ItemLost return
+    //TODO delete this
+    this.log("trying to get lost items");
+    console.log("Service - getItemsLost - get result :", this.http.get<ItemLost[]>(this.itemsLostUrl).subscribe(val => console.log(val)));
+    this.log("passed the console.log");
     return this.http.get<ItemLost[]>(this.itemsLostUrl) // swapped of with http.get
       .pipe(
         tap(_ => this.log('fetched lost items')), // taps into flow of observables
-        catchError(this.handleError('getItems', [])) // invoke handleError
+        catchError(this.handleError('getItemsLost', [])) // invoke handleError
       ); 
   }
 
-  /* GET items whose name contains search term */
+  getItemsFound() : Observable<ItemFound[]> {
+    // all HttpClient methods return a RxJS observable of something
+    // in htis case the observable is an array of ItemFound which will only ever emit once (at return)
+    // this.itemsFoundUrl returns an untyped JSON obj : casting it to ItemFound[] ensures an array of ItemFound return
+    return this.http.get<ItemFound[]>(this.itemsFoundUrl) // swapped of with http.get
+      .pipe(
+        tap(_ => this.log('fetched found items')), // taps into flow of observables
+        catchError(this.handleError('getItemsFound', [])) // invoke handleError
+      ); 
+  }
+
+  /** GET items whose name contains search term */
   searchItems(term: string): Observable<Item[]> {
     if (!term.trim()) {
       // if not search term, return empty item array.
@@ -103,6 +138,14 @@ export class ItemService {
     );
   }
 
+  addItemFound (itemFound: ItemFound): Observable<ItemFound> {
+    return this.http.post<ItemFound>(this.itemsFoundUrl, itemFound, httpOptions)
+    .pipe(
+      tap((itemFound: ItemFound) => this.log(`added found item w/ id=${itemFound.id}`)),
+      catchError(this.handleError<ItemFound>('addItemFound'))
+    );
+  }
+
   /** PUT: update the item on the server */
   updateItem(item : Item) : Observable<any> {
     return this.http.put(this.itemsUrl, item, httpOptions) // httpOptions is defined above in consts
@@ -117,6 +160,14 @@ export class ItemService {
     .pipe(
       tap(_ => this.log(`updated lost item id=${itemLost.id}`)), // taps into flow of observables
       catchError(this.handleError<any>('UpdateItemLost')) // invoke handleError
+    );
+  }
+
+  updateItemFound(itemFound : ItemFound) : Observable<any> {
+    return this.http.put(this.itemsFoundUrl, itemFound, httpOptions) // httpOptions is defined above in consts
+    .pipe(
+      tap(_ => this.log(`updated found item id=${itemFound.id}`)), // taps into flow of observables
+      catchError(this.handleError<any>('UpdateItemFound')) // invoke handleError
     );
   }
 
@@ -138,6 +189,16 @@ export class ItemService {
     return this.http.delete<ItemLost>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted lost item id=${id}`)),
       catchError(this.handleError<ItemLost>('deleteItemLost'))
+    );
+  }
+
+  deleteItemFound (itemFound: ItemFound | number): Observable<ItemFound> {
+    const id = typeof itemFound === 'number' ? itemFound : itemFound.id;
+    const url = `${this.itemsFoundUrl}/${id}`;
+
+    return this.http.delete<ItemFound>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted found item id=${id}`)),
+      catchError(this.handleError<ItemFound>('deleteItemFound'))
     );
   }
 

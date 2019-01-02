@@ -2,10 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Upload } from './upload/upload';
+import { Upload } from './uploadFiles/upload/upload';
 import { MessageService } from './message.service';
 
-/* The itemes web API expects a special header in HTTP save requests.
+/* The items web API expects a special header in HTTP save requests.
 *  That header is in the httpOptions constant defined in the ItemService. */
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,8 +20,7 @@ const httpOptions = {
 export class UploadService {
 
   //private apiUrl = 'http://localhost:3000';
-  //private itemsUrl = `${this.apiUrl}/api/items`;  // URL to web api
-  //private itemsLostUrl = `${this.apiUrl}/api/itemsLost`;  
+  //private uploadsUrl = `${this.apiUrl}/api/uploads`;  // URL to web api
 
   private uploadsUrl = `api/uploads`;  // URL to web api
 
@@ -42,7 +41,7 @@ export class UploadService {
     // all HttpClient methods return a RxJS observable of something
     // in htis case the observable is an array of Upload which will only ever emit once (at return)
     // this.itemsUrl returns an untyped JSON obj : casting it to Upload[] ensures an array of Item return
-    console.log("Service - get result :", this.http.get<Upload[]>(this.uploadsUrl).subscribe(val => console.log(val)));
+    console.log("UploadService.ts - get result :", this.http.get<Upload[]>(this.uploadsUrl).subscribe(val => console.log(val)));
     return this.http.get<Upload[]>(this.uploadsUrl) // swapped of with http.get
       .pipe(
         tap(_ => this.log('fetched uploads')), // taps into flow of observables
@@ -65,6 +64,7 @@ export class UploadService {
 
   /** POST: add a new upload to the server */
   addUpload (upload: Upload): Observable<Upload> {
+    this.log("UploadService.ts - adding upload");
     return this.http.post<Upload>(this.uploadsUrl, upload, httpOptions)
     .pipe(
       tap((upload: Upload) => this.log(`added upload w/ id=${upload.id}`)),
@@ -113,6 +113,6 @@ export class UploadService {
 
   /** Log a ItemService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`IUploadService: ${message}`);
+    this.messageService.add(`UploadService: ${message}`);
   }
 }

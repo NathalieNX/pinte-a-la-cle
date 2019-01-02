@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from '../item/item';
-import { ItemLost } from '../item/item-lost';
+import { Item } from '../itemFiles/item/item';
+import { ItemLost } from '../itemFiles/item/item-lost';
+import { ItemFound } from '../itemFiles/item/item-found';
 import { ItemService } from '../item.service';
 
 @Component({
@@ -12,12 +13,14 @@ export class DashboardComponent implements OnInit {
 
   items : Item[] = [];
   itemsLost : ItemLost[] = [];
+  itemsFound : ItemFound[] = [];
 
   constructor(private itemService : ItemService) { }
 
   ngOnInit() {
     this.getItems();
     this.getItemsLost();
+    this.getItemsFound();
   }
 
   getItems() : void {
@@ -26,6 +29,10 @@ export class DashboardComponent implements OnInit {
 
   getItemsLost() : void {
     this.itemService.getItemsLost().subscribe(itemsLost => this.itemsLost = itemsLost.slice(1,5));
+  }
+
+  getItemsFound() : void {
+    this.itemService.getItemsFound().subscribe(itemsFound => this.itemsFound = itemsFound.slice(1,5));
   }
 }
 

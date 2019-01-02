@@ -26,4 +26,16 @@
         </div>
     </a>
   </div>
+  <h2>Top found items</h2>
+  <div class="grid grid-pad">
+    <a *ngFor = "let itemFound of itemsFound" class = "col-1-4" routerLink = "/detail-found/{{itemFound.id}}">
+      <div class="panel panel-default">
+          <div class="panel-body">    
+            <div class = "module itemFound">
+              <h4>{{itemFound.title}}</h4>
+            </div>
+          </div>
+        </div>
+    </a>
+  </div>
 </div>

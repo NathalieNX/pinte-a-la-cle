@@ -1,0 +1,30 @@
+item-detail-lost.component : is displaying
+<div *ngIf="itemLost">
+    <h2>{{itemLost.title}} details</h2>
+    <div> 
+        <label>id : {{itemLost.id}}</label>
+    </div>
+    <div>
+        <label>photo : {{itemLost.photo}}</label>
+    </div>
+    <div>
+        <label>contact : {{itemLost.contact}}</label>
+        </div>
+    <div>
+        <label>description : {{itemLost.description}}</label>
+    </div>
+    <div>
+        <label>date : {{itemLost.date}}</label>
+    </div>
+    <div>
+        <label>user : {{itemLost.user}}</label>
+    </div>
+    <div>
+        <label>palc : {{itemLost.palc}}</label>
+    </div> 
+</div> 
+<button type="button" class="btn btn-default" (click) = "save()">Save</button>
+<button type="button" class="btn btn-default" title="modify lost item">
+    <a routerLink = "/modify-lost/{{itemLost.id}}">Modify</a>
+</button>
+<button type="button" class="btn btn-default" (click) = "goBack()">Go back</button>

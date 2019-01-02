@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <app-item-search></app-item-search>
+</div>
+<div class="container-fluid">
+  <h2>List of found items</h2>
+  <div class="grid grid-pad">
+    <div *ngFor = "let itemFound of itemsFound" class = "col-1-4">
+      <div class="panel panel-default">
+        <div class="panel-body">    
+          <div class = "module itemFound">
+            <a routerLink = "/detail-found/{{itemFound.id}}">
+              <span class = "badge">{{itemFound.photo}}</span>
+              <h4>{{itemFound.title}}</h4>
+            </a>
+            <button class="delete" title="modify found item">
+              <a routerLink = "/modify-found/{{itemFound.id}}">Modify</a>
+            </button>
+            <button class="delete" title="delete found item" (click)="deleteItemFound(itemFound)">Delete</button>
+          </div>
+        </div>
+      </div>      
+    </div>
+    
+  </div>
+</div>

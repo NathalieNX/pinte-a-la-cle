@@ -1,0 +1,26 @@
+<div *ngIf="itemFound">
+  <h2>{{itemFound.title}} details</h2>
+  <div> 
+      <label>id : {{itemFound.id}}</label>
+  </div>
+  <div>
+      <label>photo : {{itemFound.photo}}</label>
+  </div>
+  <div>
+      <label>contact : {{itemFound.contact}}</label>
+      </div>
+  <div>
+      <label>description : {{itemFound.description}}</label>
+  </div>
+  <div>
+      <label>date : {{itemFound.date}}</label>
+  </div>
+  <div>
+      <label>user : {{itemFound.user}}</label>
+  </div>
+</div> 
+<button type="button" class="btn btn-default" (click) = "save()">Save</button>
+<button type="button" class="btn btn-default" title="modify found item">
+  <a routerLink = "/modify-found/{{itemFound.id}}">Modify</a>
+</button>
+<button type="button" class="btn btn-default" (click) = "goBack()">Go back</button>
