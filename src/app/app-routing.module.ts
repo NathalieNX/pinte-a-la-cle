@@ -22,6 +22,8 @@ const routes : Routes = [
   { path : 'login', component : ViewLoginComponent },  
   { path : 'dashboard', component : DashboardComponent },
   //{ path : 'items', component : ItemsComponent },
+  //TODO delete
+  //{ path : 'itemsLost', component : ViewItemsLostComponent },
   { path : 'items-lost', component : ViewItemsLostComponent },
   { path : 'items-found', component : ViewItemsFoundComponent },
   { path : 'detail/:id', component : ItemDetailComponent },
