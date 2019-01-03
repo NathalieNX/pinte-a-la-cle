@@ -35,8 +35,6 @@ exports.getItemsLost = async function(query, page, limit){
     } 
     // Try Catch the awaited promise to handle the error   
     try {
-        //TODO delete this
-        console.log("ItemService.js - trying to get lost items");
         var itemsLost = await ItemLost.paginate(query, options);
         // Return the item list that was returned by the mongoose promise
         return itemsLost;
@@ -126,11 +124,7 @@ exports.createItem = async function(item){
     console.log("Service - trying to create item");
     try{
         // Saving the Item 
-        // TODO del
-        console.log("Service - trying to get item to save...");
         var savedItem = await newItem.save();
-        // TODO del
-        console.log("Service - ...got item to save");
         return savedItem;
     }catch(e){
         // TODO del
@@ -156,11 +150,7 @@ exports.createItemLost = async function(itemLost){
     console.log("Service - trying to create lost item");
     try{
         // Saving the Item 
-        // TODO del
-        console.log("Service - trying to get lost item to save...");
         var savedItemLost = await newItemLost.save();
-        // TODO del
-        console.log("Service - ...got lost item to save");
         return savedItemLost;
     }catch(e){
         // TODO del
@@ -185,11 +175,7 @@ exports.createItemFound = async function(itemFound){
     console.log("Service - trying to create lost item");
     try{
         // Saving the Item 
-        // TODO del
-        console.log("Service - trying to get lost item to save...");
         var savedItemFound = await newItemFound.save();
-        // TODO del
-        console.log("Service - ...got lost item to save");
         return savedItemFound;
     }catch(e){
         // TODO del

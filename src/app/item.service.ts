@@ -26,8 +26,8 @@ export class ItemService {
   //private itemsLostUrl = `${this.apiUrl}/api/itemsLost`;  
 
   private itemsUrl = `api/items`;  // URL to web api
-  private itemsLostUrl = `api/items-lost`;  
-  private itemsFoundUrl = `api/items-found`;  
+  private itemsLostUrl = `api/itemsLost`;  
+  private itemsFoundUrl = `api/itemsFound`;  
   
 
   constructor(private http: HttpClient, private messageService : MessageService) { }
@@ -72,9 +72,6 @@ export class ItemService {
     // all HttpClient methods return a RxJS observable of something
     // in htis case the observable is an array of Item which will only ever emit once (at return)
     // this.itemsUrl returns an untyped JSON obj : casting it to Item[] ensures an array of Item return
-    //TODO delete this
-    this.log("trying to get items");
-    console.log("Service - getItems - get result :", this.http.get<Item[]>(this.itemsUrl).subscribe(val => console.log(val)));
     return this.http.get<Item[]>(this.itemsUrl) // swapped of with http.get
       .pipe(
         tap(_ => this.log('fetched items')), // taps into flow of observables
@@ -87,9 +84,7 @@ export class ItemService {
     // in htis case the observable is an array of ItemLost which will only ever emit once (at return)
     // this.itemsLostUrl returns an untyped JSON obj : casting it to ItemLost[] ensures an array of ItemLost return
     //TODO delete this
-    this.log("trying to get lost items");
-    console.log("Service - getItemsLost - get result :", this.http.get<ItemLost[]>(this.itemsLostUrl).subscribe(val => console.log(val)));
-    this.log("passed the console.log");
+    //console.log("Service - getItemsLost - get result :", this.http.get<ItemLost[]>(this.itemsLostUrl).subscribe(val => console.log(val)));
     return this.http.get<ItemLost[]>(this.itemsLostUrl) // swapped of with http.get
       .pipe(
         tap(_ => this.log('fetched lost items')), // taps into flow of observables

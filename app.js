@@ -11,7 +11,6 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 var index = require('./routes/index.route');
-var uploads = require('./routes/api/uploads.route');
 var users = require('./routes/users.route');
 
 // Get the API route ...
@@ -36,7 +35,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 //Use the Routes
 app.use('/', index);
-app.use('/uploads', uploads);
 app.use('/users', users);
 //Use the API routes for all routes matching /api
 app.use('/api', api);

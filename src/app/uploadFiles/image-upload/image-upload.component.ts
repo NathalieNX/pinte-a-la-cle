@@ -20,14 +20,16 @@ export class ImageUploadComponent implements OnInit {
     protected location : Location
   ) { }
 
-  ngOnInit() { 
-    this.newUpload = new Upload;
+  ngOnInit() {  
+    this.newUpload = new Upload();
+    //TODO delete this
+    //console.log("upload.component - upload is : ", this.newUpload);
   }
 
   onSubmit(): void {
     console.log("UploadComponont - adding upload");
-    this.uploadService.addUpload(this.newUpload).subscribe( () => this.goBack());
     console.log(this.newUpload);
+    this.uploadService.addUpload(this.newUpload).subscribe( () => this.goBack());
   }
 
   goBack() : void {

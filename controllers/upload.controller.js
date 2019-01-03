@@ -14,7 +14,7 @@ exports.getUploads = async function(req, res, next){
     var limit = req.query.limit ? req.query.limit : 10; 
     try{
         var uploads = await UploadService.getUploads({}, page, limit)
-        // Return the todos list with the appropriate HTTP Status Code and Message.
+        // Return the list with the appropriate HTTP Status Code and Message.
         return res.status(200).json({status: 200, data: uploads, message: "Succesfully Recieved Uploads"});
     }catch(e){
         //Return an Error Response Message with Code and the Error Message.
@@ -40,17 +40,20 @@ exports.getUpload = async function(req, res, next){
 exports.createUpload = async function(req, res, next){
     // Req.Body contains the form submit values.
     // TODO use upload class ?
-    console.log(req.body); 
     console.log(req.file);
     var upload = {
         name: req.body.name,
         created: Date.now(),
-        file: req.file
+        url: req.file.url,
+        file: __dirname + '/' + req.file
     }
+    console.log("uploadController - upload is : ", upload);
     try{   
         // Calling the Service function with the new object from the Request Body
-        var createdUpload = await UploadService.createUpload(upload)
-        return res.status(201).json({status: 201, data: createdUpload, message: "Controller - Succesfully Created Upload"})
+        //var createdUpload = await UploadService.createUpload(upload)
+        //return res.status(201).json({status: 201, data: createdUpload, message: "Controller - Succesfully Created Upload"})
+        Image.create(image) // save image information in database
+            .then(newImage => res.json(newImage))
     }catch(e){
         //Return an Error Response Message with Code and the Error Message.
         return res.status(400).json({status: 400, message: "Controller - Upload Creation was Unsuccesfull"})
@@ -69,7 +72,8 @@ exports.updateUpload = async function(req, res, next){
         id,
         name : req.body.name ? req.body.name : null,
         created : req.body.created ? req.body.created : null,
-        file : req.body.file ? req.body.file : null,
+        url : req.file.url ? req.file : null,
+        file : req.file ? req.file : null,
     }
     try{
         var updatedUpload = await UploadService.updateUpload(upload)

@@ -3,12 +3,19 @@ import { catchError, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Upload } from './uploadFiles/upload/upload';
-import { MessageService } from './message.service';
+import { MessageService } from './message.service'; 
+
+/*
+//import * as multer from 'multer'
+import multer = require('multer');
+const UPLOAD_PATH = './uploads';
+const parser = multer({ dest: `${UPLOAD_PATH}/` });
+*/
 
 /* The items web API expects a special header in HTTP save requests.
 *  That header is in the httpOptions constant defined in the ItemService. */
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' })
 };
 
 /* decorator marking participant in dependency injection system */
@@ -23,6 +30,7 @@ export class UploadService {
   //private uploadsUrl = `${this.apiUrl}/api/uploads`;  // URL to web api
 
   private uploadsUrl = `api/uploads`;  // URL to web api
+
 
   constructor(private http: HttpClient, private messageService : MessageService) { }
 
@@ -64,26 +72,30 @@ export class UploadService {
 
   /** POST: add a new upload to the server */
   addUpload (upload: Upload): Observable<Upload> {
-    this.log("UploadService.ts - adding upload");
+    /*
+    app.post('/profile', upload.single('avatar'), async (req, res) => {
+      try {
+          const col = await uploadService???.(uploads, db);
+          const data = col.insert(req.file);
+  
+          db.saveDatabase();
+          res.send({ id: data.$loki, fileName: data.filename, originalName: data.originalname });
+      } catch (err) {
+          res.sendStatus(400);
+      }
+    })
+    */
+    
+    //console.log("Service - getItemsLost - post result :", this.http.post<Upload>(this.uploadsUrl, upload, httpOptions).subscribe(val => console.log(val)));
     return this.http.post<Upload>(this.uploadsUrl, upload, httpOptions)
     .pipe(
-      tap((upload: Upload) => this.log(`added upload w/ id=${upload.id}`)),
+      tap((upload: Upload) => this.log(`added upload w/ url=${upload.url}`)),
       catchError(this.handleError<Upload>('addUpload'))
     );
   }
 
-  /*
-  Upload.create(newUpload, function (err, next) {
-    if (err) {
-      next(err);
-    } else {
-      res.send(newUpload);
-    }
-  });
-  */
-
   /** PUT: update the item on the server */
-  updateItem(upload : Upload) : Observable<any> {
+  updateUpload(upload : Upload) : Observable<any> {
     return this.http.put(this.uploadsUrl, upload, httpOptions) // httpOptions is defined above in consts
     .pipe(
       tap(_ => this.log(`updated upload id=${upload.id}`)), // taps into flow of observables

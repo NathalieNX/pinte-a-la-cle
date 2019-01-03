@@ -30,6 +30,7 @@ import { ItemDetailFoundComponent } from './itemFiles/item-detail-found/item-det
 import { ViewItemsFoundComponent } from './itemFiles/view-items-found/view-items-found.component';
 import { ViewModifyFoundComponent } from './itemFiles/view-modify-found/view-modify-found.component';
 import { ViewNewFoundComponent } from './itemFiles/view-new-found/view-new-found.component';
+import { ViewUploadsComponent } from './uploadFiles/view-uploads/view-uploads.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ViewNewFoundComponent } from './itemFiles/view-new-found/view-new-found
     ViewItemsFoundComponent,
     ViewModifyFoundComponent,
     ViewNewFoundComponent,
+    ViewUploadsComponent,
   ],
   imports: [
     BrowserModule,

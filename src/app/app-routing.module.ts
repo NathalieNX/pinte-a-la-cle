@@ -16,6 +16,7 @@ import { FormNewItemFoundComponent } from './itemFiles/form-new-item-found/form-
 import { FormModifyItemLostComponent } from './itemFiles/form-modify-item-lost/form-modify-item-lost.component';
 import { FormModifyItemFoundComponent } from './itemFiles/form-modify-item-found/form-modify-item-found.component';
 import { ImageUploadComponent } from './uploadFiles/image-upload/image-upload.component';
+import { ViewUploadsComponent } from './uploadFiles/view-uploads/view-uploads.component';
 
 const routes : Routes = [
   { path : '', redirectTo : '/login', pathMatch : 'full' },
@@ -23,7 +24,6 @@ const routes : Routes = [
   { path : 'dashboard', component : DashboardComponent },
   //{ path : 'items', component : ItemsComponent },
   //TODO delete
-  //{ path : 'itemsLost', component : ViewItemsLostComponent },
   { path : 'items-lost', component : ViewItemsLostComponent },
   { path : 'items-found', component : ViewItemsFoundComponent },
   { path : 'detail/:id', component : ItemDetailComponent },
@@ -33,7 +33,8 @@ const routes : Routes = [
   { path : 'new-found', component : FormNewItemFoundComponent },
   { path : 'modify-lost/:id', component : FormModifyItemLostComponent },
   { path : 'modify-found/:id', component : FormModifyItemFoundComponent },
-  { path : 'image-upload', component : ImageUploadComponent },
+  { path : 'new-upload', component : ImageUploadComponent },
+  { path : 'all-uploads', component : ViewUploadsComponent },
 
 
 

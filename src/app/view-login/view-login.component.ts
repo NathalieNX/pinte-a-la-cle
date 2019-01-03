@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user/user';
 import { UserService } from '../user.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-view-login',
@@ -11,17 +12,19 @@ export class ViewLoginComponent implements OnInit {
 
   user : User;
 
-  constructor(protected userService : UserService) { }
+  constructor(protected userService : UserService, private messageService : MessageService) { }
 
   ngOnInit() : void {
+    this.log("Initializing user to no user");
     this.getUser("no user");
   }
 
-  getUser(username : string) : void {
+  getUser(name : string) : void {
+    this.log("Getting user")
     /* route.snapshot is a static image of route info
     *  paramMap is dict of route parameter values
     *  the key id returns the id */
-    this.userService.getUser(username).subscribe(user => this.user = user);
+    this.userService.getUser(name).subscribe(user => this.user = user);
   }
 
   setUser(): void {
@@ -29,9 +32,14 @@ export class ViewLoginComponent implements OnInit {
   }
 
   login(): void {
-    this.getUser(this.user.username);
+    this.getUser(this.user.name);
     this.setUser();
     // go to homepage via routing
+  }
+
+  /** Log a ItemService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(`UserService: ${message}`);
   }
 
 

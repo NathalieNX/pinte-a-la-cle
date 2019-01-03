@@ -1,9 +1,27 @@
-<h2>Login</h2>
-<div>
-  <div>
-      <label>username :
-          <input [(ngModel)] = "user.username" placeholder = "username">
-      </label>
-  </div>
+
+<div class="container">
+        <h1>Login</h1>
+        <form (ngSubmit)="onSubmit()" #formNewItemLost="ngForm">
+      
+          <div class="form-group">
+            <label for="name">Username</label>
+            <input type="text" class="form-control" id="name" required 
+              [(ngModel)]="user.name" name="name">
+          </div>
+          <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+            Username is required
+          </div>
+
+          <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" required 
+                  [(ngModel)]="user.password" name="password">
+              </div>
+              <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                Password is required
+              </div>
+      
+        <button type="submit" class="btn btn-success" [disabled]="!formNewItemLost.form.valid" (click) = "login()">Login</button>
+    </form>
 </div>
-<button (click) = "login()">login</button>
+Add route to homepage + fix user issue + check forms module imported into local @NgModule

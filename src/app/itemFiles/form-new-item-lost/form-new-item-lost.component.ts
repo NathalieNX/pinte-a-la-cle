@@ -37,7 +37,7 @@ export class FormNewItemLostComponent implements OnInit {
     }
   }  
 
-  onSubmit(): void {
+  onSubmit(): void { 
     this.submitted = true;
     console.log(this.model.title);
     this.itemService.addItemLost(this.model).subscribe( () => this.goBack());

@@ -2,6 +2,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Item } from '../item/item';
 import { ItemLost } from '../item/item-lost';
 import { ItemFound } from '../item/item-found';
+import { Upload } from '../../uploadFiles/upload/upload';
 import { User } from '../../user/user';
 
 export class InMemoryDataService implements InMemoryDbService {
@@ -93,23 +94,27 @@ export class InMemoryDataService implements InMemoryDbService {
         
     ];
 
+    const uploads: Upload[] = [
+
+    ];
+
     const users: User[] = [
-        {username : "no user",
-            pwHash : "no user",
+        {name : "no user",
+            password : "no user",
         },
-        {username : "user0",
-            pwHash : "a0",
+        {name : "user0",
+            password : "a0",
         },
-        {username : "user1",
-            pwHash : "a1",
+        {name : "user1",
+            password : "a1",
         },
-        {username : "user2",
-            pwHash : "a2",
+        {name : "user2",
+            password : "a2",
         },
         
     ];
 
-    return {items, itemsLost, itemsFound, users};
+    return {items, itemsLost, itemsFound, uploads, users};
   }
 
   // Overrides the genId method to ensure that a hero always has an id.

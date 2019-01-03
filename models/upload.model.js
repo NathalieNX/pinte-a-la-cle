@@ -6,6 +6,7 @@ var UploadSchema = mongoose.Schema({
   id: Number,
   name: String,
   created: Date,
+  url: String,
   file: Object
 });
 
