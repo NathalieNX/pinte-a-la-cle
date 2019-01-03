@@ -1,7 +1,7 @@
 
 // controller layer
 
-// Accessing the Service that we just created
+// Accessing the Service
 var UploadService = require('../services/upload.service');
 var Upload = require('../models/upload.model');
 // Saving the context of this module inside the _this variable

@@ -22,12 +22,12 @@ export class UserService {
 
   constructor(private http: HttpClient, private messageService : MessageService) { }
 
-  getUser(username : string) : Observable<User> {
-    const url = `${this.usersUrl}/${username}`;
+  getUser(name : string) : Observable<User> {
+    const url = `${this.usersUrl}/${name}`;
     return this.http.get<User>(url)
     .pipe(
-      tap(_ => this.log(`fetched user username=${username}`)), 
-      catchError(this.handleError<User>(`getUser username=${username}`)) // invoke handleError
+      tap(_ => this.log(`fetched username=${name}`)), 
+      catchError(this.handleError<User>(`getUsername=${name}`)) // invoke handleError
     ); 
   }
 
@@ -44,12 +44,12 @@ export class UserService {
 
   setUser(user : User) : Observable<User> {
     this.currentUser = user;
-    const url = `${this.usersUrl}/${user.username}`;
+    const url = `${this.usersUrl}/${user.name}`;
     console.log("Boo");
     return this.http.get<User>(url)
     .pipe(
-      tap(_ => this.log(`fetched user username=${user.username}`)), 
-      catchError(this.handleError<User>(`getUser username=${user.username}`)) // invoke handleError
+      tap(_ => this.log(`fetched username=${user.name}`)), 
+      catchError(this.handleError<User>(`getUsername=${user.name}`)) // invoke handleError
     );  
   }
 

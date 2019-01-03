@@ -4,19 +4,24 @@ var path = require('path');
 var logger = require('morgan'); 
 var createError = require('http-errors');
 var cookieParser = require('cookie-parser');
+var passport = require('passport');
 
 var bluebird = require('bluebird')
 var mongoose = require('mongoose')
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 
-var index = require('./routes/index.route');
-var users = require('./routes/users.route');
 
-// Get the API route ...
-var api = require('./routes/api.route')
+
+// Require the routes ...
+var api = require('./routes/api.route');
+var index = require('./routes/index.route');
 
 var app = express();
+
+// require config and use passport
+require('./api/config/passport');
+app.use(passport.initialize());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,16 +33,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// added for images
+// use for images
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//Use the Routes
+// Use the Routes - ex : Use the API routes for all routes matching /api
 app.use('/', index);
 app.use('/users', users);
-//Use the API routes for all routes matching /api
 app.use('/api', api);
+
 //added for images
 app.use(express.static('public'));
 
@@ -68,3 +73,13 @@ app.use(function(req, res, next) {
     next();
   });
 */
+
+// Error handling
+
+app.use(function (err, req, res, next) {
+  // Auth error
+  if (err.name === 'UnauthorizedError') {
+    res.status(401);
+    res.json({"message" : err.name + " : " + err.message});
+  }
+});

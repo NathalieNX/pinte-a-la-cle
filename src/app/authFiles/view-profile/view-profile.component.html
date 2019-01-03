@@ -1,0 +1,11 @@
+<div class="form-horizontal">
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Full name</label>
+      <!-- ?. is a safety operator for binding properties that don’t exist on first render (since data has to load first) -->
+      <p class="form-control-static">{{ details?.name }}</p>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Email</label>
+      <p class="form-control-static">{{ details?.email }}</p>
+    </div>
+  </div>

@@ -17,7 +17,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ItemSearchComponent } from './itemFiles/item-search/item-search.component';
 import { ItemDetailLostComponent } from './itemFiles/item-detail-lost/item-detail-lost.component';
-import { ViewLoginComponent } from './view-login/view-login.component';
+import { ViewLoginComponent } from './authFiles/view-login/view-login.component';
 import { ViewItemsLostComponent } from './itemFiles/view-items-lost/view-items-lost.component';
 import { ViewNewLostComponent } from './itemFiles/view-new-lost/view-new-lost.component';
 import { FormNewItemLostComponent } from './itemFiles/form-new-item-lost/form-new-item-lost.component';
@@ -31,6 +31,8 @@ import { ViewItemsFoundComponent } from './itemFiles/view-items-found/view-items
 import { ViewModifyFoundComponent } from './itemFiles/view-modify-found/view-modify-found.component';
 import { ViewNewFoundComponent } from './itemFiles/view-new-found/view-new-found.component';
 import { ViewUploadsComponent } from './uploadFiles/view-uploads/view-uploads.component';
+import { ViewRegisterComponent } from './authFiles/view-register/view-register.component';
+import { ViewProfileComponent } from './authFiles/view-profile/view-profile.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { ViewUploadsComponent } from './uploadFiles/view-uploads/view-uploads.co
     ViewModifyFoundComponent,
     ViewNewFoundComponent,
     ViewUploadsComponent,
+    ViewRegisterComponent,
+    ViewProfileComponent,
   ],
   imports: [
     BrowserModule,
