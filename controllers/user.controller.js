@@ -11,7 +11,7 @@ exports.getUsers = async function(req, res, next){
     var limit = req.query.limit ? req.query.limit : 10; 
     try{
         var users = await UserService.getUsers({}, page, limit)
-        // Return the todos list with the appropriate HTTP Status Code and Message.
+        // Return the items list with the appropriate HTTP Status Code and Message.
         return res.status(200).json({status: 200, data: users, message: "Succesfully Recieved Users"});
     }catch(e){
         //Return an Error Response Message with Code and the Error Message.

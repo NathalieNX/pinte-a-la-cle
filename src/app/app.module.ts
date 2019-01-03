@@ -10,8 +10,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './itemFiles/itemList/in-memory-data-service';
 
 import { AppComponent } from './app.component';
-import { ItemsComponent } from './itemFiles/items/items.component';
 
+import { ItemsComponent } from './itemFiles/items/items.component';
 import { ItemDetailComponent } from './itemFiles/item-detail/item-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -33,6 +33,8 @@ import { ViewNewFoundComponent } from './itemFiles/view-new-found/view-new-found
 import { ViewUploadsComponent } from './uploadFiles/view-uploads/view-uploads.component';
 import { ViewRegisterComponent } from './authFiles/view-register/view-register.component';
 import { ViewProfileComponent } from './authFiles/view-profile/view-profile.component';
+import { AuthenticationService } from './authentication.service';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,10 @@ import { ViewProfileComponent } from './authFiles/view-profile/view-profile.comp
     )
 
   ],
-  providers: [],
+  providers: [
+    AuthenticationService, 
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

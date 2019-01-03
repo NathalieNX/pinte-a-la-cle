@@ -1,10 +1,52 @@
 var passport = require('passport');
-var User = require('../models/user.model');
+//var User = require('../models/user.model');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
 
 // Saving the context of this module inside the _this variable
 _this = this;
 
+var sendJSONresponse = function(res, status, content) {
+    res.status(status);
+    res.json(content);
+  };
+
+exports.register = function(req, res) {
+
+    // if(!req.body.name || !req.body.email || !req.body.password) {
+    //   sendJSONresponse(res, 400, {
+    //     "message": "All fields required"
+    //   });
+    //   return;
+    // }
+
+    var user = new User();
+
+    user.name = req.body.name;
+    user.email = req.body.email;
+
+    user.setPassword(req.body.password);
+
+    user.save(function(err) {
+        var token;
+        token = user.generateJwt();
+        res.status(200);
+        res.json({
+        "token" : token
+        });
+    });
+
+    };
+
 exports.login = async function(req, res, next){
+
+    // if(!req.body.email || !req.body.password) {
+    //   sendJSONresponse(res, 400, {
+    //     "message": "All fields required"
+    //   });
+    //   return;
+    // }
+
     passport.authenticate('local', function(err, user, info){
         var token;
     

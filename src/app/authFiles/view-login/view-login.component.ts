@@ -27,10 +27,6 @@ export class ViewLoginComponent implements OnInit {
     });
   }
 
-  goToRegister() {
-    this.router.navigateByUrl('/register');
-  }
-
   /** Log a ItemService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`UserService: ${message}`);

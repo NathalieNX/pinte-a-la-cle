@@ -9,6 +9,7 @@ import { MessageService } from './message.service';
 export interface UserDetails {
   _id: string;
   email: string;
+  name: string;
   exp: number;
   iat: number;
 }
@@ -87,8 +88,6 @@ export class AuthenticationService {
       // pass token to API through GET request header
       base = this.http.get(`/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
     }
-    // TODO delete this
-    //this.log("base is : " + base);
   
     const request = base.pipe(
       map((data: TokenResponse) => {
@@ -103,7 +102,7 @@ export class AuthenticationService {
     return request;
   }
 
-  // emit a resistration request
+  // emit a registration request
   public register(user: TokenPayload): Observable<any> {
     return this.request('post', 'register', user);
   }

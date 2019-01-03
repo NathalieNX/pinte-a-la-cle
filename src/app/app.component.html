@@ -12,9 +12,9 @@
                 <div class="navbar-brand">{{title}}</div>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul *ngIf="authenticationService.isLoggedIn()" class="nav navbar-nav">
+                <ul class="nav navbar-nav">
                     <!-- Use RouterModule public directive routerLink to set route -->
-                    <li><a class="nav-link" routerLink="/profile">{{ auth.getUserDetails()?.name }}</a></li>
+                    <li><a class="nav-link" routerLink="/profile">{{ authenticationService.getUserDetails()?.name }}</a></li>
                     <li><a class="nav-link" routerLink="/dashboard">Dashboard</a></li>
                     <li><a class="nav-link" routerLink="/items-lost">Lost items</a></li>
                     <li><a class="nav-link" routerLink="/items-found">Found items</a></li>

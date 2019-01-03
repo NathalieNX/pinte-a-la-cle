@@ -99,18 +99,6 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const users: User[] = [
-        {name : "no user",
-            password : "no user",
-        },
-        {name : "user0",
-            password : "a0",
-        },
-        {name : "user1",
-            password : "a1",
-        },
-        {name : "user2",
-            password : "a2",
-        },
         
     ];
 

@@ -1,11 +1,22 @@
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate')
+//var crypto = require('crypto');
 var jsonwebtoken = reqire('jsonwebtoken');
 
-var UserSchema = mongoose.Schema({
-    name: String,
+var userSchema = new mongoose.Schema({
+    email: {
+      type: String,
+      unique: true,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    },
     password: String,
-});
+    //hash: String,
+    //salt: String
+  });
 
 // TODO CRITICAL : password are stored. This is a demo. 
 // Store salt and hash instead, see :
@@ -30,6 +41,7 @@ userSchema.methods.generateJsonWebToken = function() {
   
     return jsonwebtoken.sign({
         _id: this._id,
+        email: this.email,
         name: this.name,
         exp: parseInt(expiry.getTime() / 1000),
     }, "MY_SECRET"); // DO NOT KEEP YOUR SECRET IN THE CODE!

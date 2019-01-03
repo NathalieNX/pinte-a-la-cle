@@ -18,7 +18,7 @@ exports.getItems = async function(req, res, next){
     var limit = req.query.limit ? req.query.limit : 10; 
     try{
         var items = await ItemService.getItems({}, page, limit)
-        // Return the todos list with the appropriate HTTP Status Code and Message.
+        // Return the itemss list with the appropriate HTTP Status Code and Message.
         return res.status(200).json({status: 200, data: items, message: "Succesfully Recieved Items"});
     }catch(e){
         //Return an Error Response Message with Code and the Error Message.
@@ -32,7 +32,7 @@ exports.getItemsLost = async function(req, res, next){
     var limit = req.query.limit ? req.query.limit : 10; 
     try{
         var itemsLost = await ItemService.getItemsLost({}, page, limit)
-        // Return the todos list with the appropriate HTTP Status Code and Message.
+        // Return the items list with the appropriate HTTP Status Code and Message.
         return res.status(200).json({status: 200, data: itemsLost, message: "Succesfully Recieved Lost Items"});
     }catch(e){
         //Return an Error Response Message with Code and the Error Message.
@@ -46,7 +46,7 @@ exports.getItemsFound = async function(req, res, next){
     var limit = req.query.limit ? req.query.limit : 10; 
     try{
         var itemsFound = await ItemService.getItemsFound({}, page, limit)
-        // Return the todos list with the appropriate HTTP Status Code and Message.
+        // Return the items list with the appropriate HTTP Status Code and Message.
         return res.status(200).json({status: 200, data: itemsFound, message: "Succesfully Recieved Found Items"});
     }catch(e){
         //Return an Error Response Message with Code and the Error Message.
