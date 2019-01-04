@@ -3,6 +3,7 @@ var router = express.Router();
 //var fs = require('fs');
 //var Upload = require('../models/upload');
 const multer = require('multer');
+/*
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
 cloudinary.config({
@@ -10,12 +11,14 @@ cloudinary.config({
     api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET
     });
+
 const storage = cloudinaryStorage({
     cloudinary: cloudinary,
     folder: "demo",
     allowedFormats: ["jpg", "png"],
     transformation: [{ width: 500, height: 500, crop: "limit" }]
     });
+*/
 
 var storage = multer.diskStorage({
     destination: function(req, file, cb){
@@ -46,8 +49,8 @@ var UploadController = require('../../controllers/upload.controller');
  */
 router.get('/', UploadController.getUploads);
 //TODO change id for filename !!!
-router.get('/:id', UploadController.getIUpload);
+router.get('/:id', UploadController.getUpload);
 router.post('/', parser.single('file'), UploadController.createUpload);
 router.put('/', UploadController.updateUpload);
-router.delete('/:id', UploadController.removeIUpload);
+router.delete('/:id', UploadController.removeUpload);
 module.exports = router;

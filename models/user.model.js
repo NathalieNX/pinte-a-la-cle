@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate')
 //var crypto = require('crypto');
-var jsonwebtoken = reqire('jsonwebtoken');
+var jsonwebtoken = require('jsonwebtoken');
 
-var userSchema = new mongoose.Schema({
+var UserSchema = new mongoose.Schema({
     email: {
       type: String,
       unique: true,
@@ -35,7 +35,7 @@ UserSchema.methods.validPassword = function(password) {
     return this.password === password;
 };
 
-userSchema.methods.generateJsonWebToken = function() {
+UserSchema.methods.generateJsonWebToken = function() {
     var expiry = new Date();
     expiry.setDate(expiry.getDate() + 7);
   

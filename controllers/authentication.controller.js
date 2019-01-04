@@ -1,7 +1,7 @@
 var passport = require('passport');
-//var User = require('../models/user.model');
-var mongoose = require('mongoose');
-var User = mongoose.model('User');
+var User = require('../models/user.model');
+//var mongoose = require('mongoose');
+//var User = mongoose.model('User');
 
 // Saving the context of this module inside the _this variable
 _this = this;

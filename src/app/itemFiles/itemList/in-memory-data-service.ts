@@ -17,7 +17,7 @@ export class InMemoryDataService implements InMemoryDbService {
             user : 110,
         },
         {id : 11,
-            title : "item 1test",
+            title : "item 1",
             photo : 1,
             contact : "me 1",
             description : "here 1",
